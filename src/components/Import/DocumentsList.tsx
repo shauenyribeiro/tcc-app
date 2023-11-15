@@ -2,6 +2,7 @@ import { FlatList, ListRenderItemInfo, View, StyleSheet } from "react-native";
 import * as DocumentPicker from "expo-document-picker";
 
 import { Text } from "../Text";
+import { formatByteSize } from "../../utils/formatByteSize";
 
 export type Document = DocumentPicker.DocumentPickerAsset;
 
@@ -17,7 +18,7 @@ function DocumentInfo({ name, size }: DocumentInfoProps) {
         {name}
       </Text>
       <Text weight="regular" style={styles.documentSize}>
-        {size} bytes
+        {formatByteSize(size)}
       </Text>
     </View>
   );
@@ -54,13 +55,16 @@ const styles = StyleSheet.create({
   documentInfoContainer: {
     paddingVertical: 12,
     paddingHorizontal: 16,
+    gap: 8,
     flexDirection: "row",
     justifyContent: "space-between",
+    alignItems: "center",
     backgroundColor: "#f1f1f1",
     borderRadius: 12,
   },
   documentName: {
     color: "#8191e4",
+    maxWidth: "80%",
   },
   documentSize: {
     color: "#949494",

@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useRef } from "react";
 import {
   NativeSyntheticEvent,
   TextInput as RNTextInput,
@@ -12,13 +12,11 @@ import { Text } from "./Text";
 
 type Props = Omit<TextInputProps, "cursorColor" | "onChangeText"> & {
   label: string;
-  startAdornment?: string;
   name?: string;
   onChangeText: (text: string, name: string) => void;
 };
 
 export function TextInput({
-  startAdornment,
   style,
   label,
   onFocus,
@@ -28,14 +26,12 @@ export function TextInput({
   name = "",
   ...rest
 }: Props) {
-  const [isFocused, setIsFocused] = useState(false);
+  // const [isFocused, setIsFocused] = useState(false);
   const input = useRef<RNTextInput>(null);
-
-  const showAdornment = !!startAdornment && (isFocused || !!value);
 
   const handleOnFocus = useCallback(
     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-      setIsFocused(true);
+      // setIsFocused(true);
       if (onFocus) {
         onFocus(e);
       }
@@ -45,7 +41,7 @@ export function TextInput({
 
   const handleOnBlur = useCallback(
     (e: NativeSyntheticEvent<TextInputFocusEventData>) => {
-      setIsFocused(false);
+      // setIsFocused(false);
       if (onBlur) {
         onBlur(e);
       }
@@ -65,12 +61,10 @@ export function TextInput({
       <Text weight="regular" style={styles.label}>
         {label}
       </Text>
-      {showAdornment && (
-        <Text style={styles.startAdornment}>{startAdornment}</Text>
-      )}
       <RNTextInput
         cursorColor="#8191e4"
-        style={[styles.input, showAdornment && styles.adornedInput, style]}
+        value={value}
+        style={[styles.input, style]}
         ref={input}
         onFocus={handleOnFocus}
         onBlur={handleOnBlur}
@@ -96,15 +90,5 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto_500Medium",
     paddingBottom: 4,
     color: "#636363",
-  },
-  startAdornment: {
-    fontSize: 16,
-    fontFamily: "Roboto_500Medium",
-    color: "#636363",
-    position: "absolute",
-    top: "40%",
-  },
-  adornedInput: {
-    paddingLeft: 24,
   },
 });

@@ -3,7 +3,7 @@ import { Pressable, StatusBar, StyleSheet, View } from "react-native";
 import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
 
-import { Text } from "../components/Text";
+import { LINE_HEIGHT_MULTIPLIER, Text } from "../components/Text";
 import { Button } from "../components/Button";
 import { NavButton } from "../components/NavButton";
 import {
@@ -54,6 +54,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 24,
+    lineHeight: 24 * LINE_HEIGHT_MULTIPLIER,
     textAlign: "center",
   },
   importContainer: {

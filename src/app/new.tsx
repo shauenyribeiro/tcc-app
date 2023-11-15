@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 
-import { Text } from "../components/Text";
+import { LINE_HEIGHT_MULTIPLIER, Text } from "../components/Text";
 import { NavButton } from "../components/NavButton";
 
 export default function NewRelease() {
@@ -33,6 +33,7 @@ const styles = StyleSheet.create({
   title: {
     color: "#636363",
     fontSize: 24,
+    lineHeight: 24 * LINE_HEIGHT_MULTIPLIER,
     textAlign: "center",
     marginBottom: 64,
   },

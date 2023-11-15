@@ -18,6 +18,7 @@ import { Button } from "../components/Button";
 
 import { useForm } from "../hooks/useForm";
 import { Release } from "../models/Release";
+import { MaskedInput, Masks } from "../components/MaskedInput";
 
 type CheckboxOptions = "" | "expense" | "income";
 
@@ -46,10 +47,17 @@ export default function Create() {
     setCheckedOption("expense");
   }, []);
 
+  const handleValueInput = useCallback(
+    (_maskedValue: string, name: string, unmaskedValue: string) => {
+      setValues(unmaskedValue, name);
+    },
+    []
+  );
+
   const handleConfirmAction = () => {
     setLoading(true);
     realm.write(() => {
-      const numericValue = +values.value;
+      const numericValue = +values.value.padEnd(3, "0") / 100;
       const value =
         checkedOption === "expense" ? -1 * numericValue : numericValue;
       return realm.create(Release, {
@@ -71,7 +79,7 @@ export default function Create() {
       })}
     >
       <ScrollView
-        // keyboardShouldPersistTaps="handled"
+        keyboardShouldPersistTaps="handled"
         contentContainerStyle={styles.content}
       >
         <TextInput
@@ -82,22 +90,24 @@ export default function Create() {
           placeholder="Ex: Netflix"
           maxLength={40}
         />
-        <TextInput
+        <MaskedInput
           value={values.value}
-          onChangeText={setValues}
+          onChangeText={handleValueInput}
           name="value"
           label="Valor"
           placeholder="Ex: R$ 50,00"
-          startAdornment="R$"
           keyboardType="numeric"
+          mask={Masks.BRL_CURRENCY}
+          maxLength={12}
         />
-        <TextInput
+        <MaskedInput
           value={values.date}
           onChangeText={setValues}
           name="date"
           label="Data"
           placeholder="Ex: DD/MM/AAAA"
           maxLength={10}
+          mask={Masks.DATE_DDMMYYYY}
         />
         <RadioButton
           checked={checkedOption === "income"}

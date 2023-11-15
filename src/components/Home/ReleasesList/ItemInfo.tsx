@@ -1,31 +1,25 @@
-import {
-  Pressable,
-  StyleSheet,
-  TextStyle,
-  View,
-  ViewStyle,
-} from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 import { useState } from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import { Text } from "../../Text";
-
 import { Release } from "../../../models/Release";
+
+import { Text } from "../../Text";
 
 type ReleaseInfoProps = {
   item: Release & Realm.Object;
+  onPressDelete: (item: Release & Realm.Object) => void;
+  onPressEdit: (item: Release & Realm.Object) => void;
 };
 
-export function ItemInfo({ item }: ReleaseInfoProps) {
+export function ItemInfo({
+  item,
+  onPressDelete,
+  onPressEdit,
+}: ReleaseInfoProps) {
   const [open, setOpen] = useState(false);
 
-  const containerStyles: ViewStyle[] = [styles.itemContainer];
-  const valueStyles: TextStyle[] = [styles.value];
-
-  if (item.value < 0) {
-    containerStyles.push(styles.negativeValueContainer);
-    valueStyles.push(styles.negativeValue);
-  }
+  const isExpense = item.value < 0;
 
   const formattedValue = new Intl.NumberFormat("default", {
     style: "currency",
@@ -34,7 +28,13 @@ export function ItemInfo({ item }: ReleaseInfoProps) {
 
   return (
     <Pressable onPress={() => setOpen((curr) => !curr)}>
-      <View style={[...containerStyles, !open && styles.closedContainer]}>
+      <View
+        style={[
+          styles.itemContainer,
+          isExpense && styles.negativeValueContainer,
+          !open && styles.closedContainer,
+        ]}
+      >
         <View style={styles.row}>
           <Text
             weight="regular"
@@ -46,7 +46,7 @@ export function ItemInfo({ item }: ReleaseInfoProps) {
           </Text>
           <Text
             weight="regular"
-            style={valueStyles}
+            style={[styles.value, isExpense && styles.negativeValue]}
             numberOfLines={1}
             ellipsizeMode="tail"
           >
@@ -58,10 +58,16 @@ export function ItemInfo({ item }: ReleaseInfoProps) {
         </View>
         {open && (
           <View style={[styles.row, styles.actionsContainer]}>
-            <Pressable style={[styles.deleteAction, styles.action]}>
+            <Pressable
+              style={[styles.deleteAction, styles.action]}
+              onPress={() => onPressDelete(item)}
+            >
               <FontAwesome5 name="trash-alt" size={20} color="#636363" />
             </Pressable>
-            <Pressable style={[styles.editAction, styles.action]}>
+            <Pressable
+              style={[styles.editAction, styles.action]}
+              onPress={() => onPressEdit(item)}
+            >
               <FontAwesome5 name="pen" size={20} color="#636363" />
             </Pressable>
           </View>

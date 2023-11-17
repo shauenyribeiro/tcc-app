@@ -1,12 +1,12 @@
+import { useEffect, useState } from "react";
 import { StyleSheet, View, StatusBar } from "react-native";
 import { useQuery } from "@realm/react";
 
-import { NavButton } from "../components/NavButton";
-import { ReleasesList } from "../components/Home/ReleasesList";
-import { Header } from "../components/Home/Header";
+import { NavButton } from "@components/NavButton";
+import { ReleasesList } from "@components/Home/ReleasesList";
+import { Header } from "@components/Home/Header";
 
-import { Release } from "../models/Release";
-import { useEffect, useState } from "react";
+import { Release } from "@models/Release";
 
 export default function App() {
   const releases = useQuery(Release, (collection) => collection.sorted("date"));

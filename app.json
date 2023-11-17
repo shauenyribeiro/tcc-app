@@ -12,13 +12,8 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "plugins": [
-      "expo-router",
-      "expo-document-picker"
-    ],
+    "assetBundlePatterns": ["**/*"],
+    "plugins": ["expo-router", "expo-document-picker"],
     "android": {
       "package": "dev.apprepository.Finantrole",
       "adaptiveIcon": {
@@ -37,6 +32,9 @@
       "eas": {
         "projectId": "36b838d8-d420-4bad-a706-b01b23880253"
       }
+    },
+    "experiments": {
+      "tsconfigPaths": true
     }
   }
 }

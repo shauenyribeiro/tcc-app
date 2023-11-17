@@ -1,7 +1,7 @@
 import { StyleSheet, View, Pressable } from "react-native";
 import { Image } from "expo-image";
 
-import { Text, LINE_HEIGHT_MULTIPLIER } from "../Text";
+import { Text, LINE_HEIGHT_MULTIPLIER } from "@components/Text";
 
 type HeaderProps = { value: number };
 

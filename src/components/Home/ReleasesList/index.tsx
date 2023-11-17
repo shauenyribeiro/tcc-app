@@ -1,9 +1,9 @@
 import { useCallback, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { useRealm } from "@realm/react";
-import Realm, { flags } from "realm";
+import Realm from "realm";
 
-import { Release } from "../../../models/Release";
+import { Release } from "@models/Release";
 
 import { DeleteModal } from "./DeleteModal";
 import { Header } from "./Header";

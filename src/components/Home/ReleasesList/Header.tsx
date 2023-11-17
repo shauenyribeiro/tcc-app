@@ -1,6 +1,6 @@
 import { StyleSheet, View } from "react-native";
 
-import { Text } from "../../Text";
+import { Text } from "@components/Text";
 
 export function Header() {
   return (

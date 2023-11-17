@@ -9,14 +9,15 @@ import { useNavigation } from "expo-router";
 import { StackActions } from "@react-navigation/native";
 import { useRealm } from "@realm/react";
 
-import { TextInput } from "../components/TextInput";
-import { MaskedInput, Masks } from "../components/MaskedInput";
-import { RadioButton } from "../components/RadioButton";
-import { NavButton } from "../components/NavButton";
-import { Button } from "../components/Button";
+import { TextInput } from "@components/TextInput";
+import { MaskedInput, Masks } from "@components/MaskedInput";
+import { RadioButton } from "@components/RadioButton";
+import { NavButton } from "@components/NavButton";
+import { Button } from "@components/Button";
 
-import { useForm } from "../hooks/useForm";
-import { Release } from "../models/Release";
+import { useForm } from "@hooks/useForm";
+
+import { Release } from "@models/Release";
 
 type CheckboxOptions = "" | "expense" | "income";
 

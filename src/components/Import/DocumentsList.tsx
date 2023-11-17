@@ -1,8 +1,9 @@
 import { FlatList, ListRenderItemInfo, View, StyleSheet } from "react-native";
 import * as DocumentPicker from "expo-document-picker";
 
-import { Text } from "../Text";
-import { formatByteSize } from "../../utils/formatByteSize";
+import { Text } from "@components/Text";
+
+import { formatByteSize } from "@utils/formatByteSize";
 
 export type Document = DocumentPicker.DocumentPickerAsset;
 

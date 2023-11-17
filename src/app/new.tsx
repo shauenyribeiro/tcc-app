@@ -1,7 +1,7 @@
 import { StyleSheet, View } from "react-native";
 
-import { LINE_HEIGHT_MULTIPLIER, Text } from "../components/Text";
-import { NavButton } from "../components/NavButton";
+import { LINE_HEIGHT_MULTIPLIER, Text } from "@components/Text";
+import { NavButton } from "@components/NavButton";
 
 export default function NewRelease() {
   return (

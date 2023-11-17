@@ -2,9 +2,9 @@ import { Pressable, StyleSheet, View } from "react-native";
 import { useState } from "react";
 import { FontAwesome5 } from "@expo/vector-icons";
 
-import { Release } from "../../../models/Release";
+import { Release } from "@models/Release";
 
-import { Text } from "../../Text";
+import { Text } from "@components/Text";
 
 type ReleaseInfoProps = {
   item: Release & Realm.Object;

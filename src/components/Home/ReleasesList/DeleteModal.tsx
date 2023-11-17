@@ -1,9 +1,10 @@
 import { Modal, View, StyleSheet, ModalProps } from "react-native";
 import Realm from "realm";
 
-import { Text } from "../../Text";
-import { Button } from "../../Button";
-import { Release } from "../../../models/Release";
+import { Text } from "@components/Text";
+import { Button } from "@components/Button";
+
+import { Release } from "@models/Release";
 
 type Props = Omit<ModalProps, "transparent" | "animationType"> & {
   release: Release & Realm.Object;

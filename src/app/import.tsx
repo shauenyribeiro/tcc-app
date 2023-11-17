@@ -3,13 +3,10 @@ import { Pressable, StatusBar, StyleSheet, View } from "react-native";
 import * as DocumentPicker from "expo-document-picker";
 import * as FileSystem from "expo-file-system";
 
-import { LINE_HEIGHT_MULTIPLIER, Text } from "../components/Text";
-import { Button } from "../components/Button";
-import { NavButton } from "../components/NavButton";
-import {
-  DocumentsList,
-  type Document,
-} from "../components/Import/DocumentsList";
+import { LINE_HEIGHT_MULTIPLIER, Text } from "@components/Text";
+import { Button } from "@components/Button";
+import { NavButton } from "@components/NavButton";
+import { DocumentsList, type Document } from "@components/Import/DocumentsList";
 
 export default function Import() {
   const [files, setFiles] = useState<Document[]>([]);

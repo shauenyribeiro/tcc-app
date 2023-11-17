@@ -2,14 +2,15 @@ import { useCallback, useEffect, useState } from "react";
 import { Modal, View, StyleSheet, ModalProps } from "react-native";
 import Realm from "realm";
 
-import { Release } from "../../../models/Release";
-import { useForm } from "../../../hooks/useForm";
+import { TextInput } from "@components/TextInput";
+import { MaskedInput, Masks } from "@components/MaskedInput";
+import { Text } from "@components/Text";
+import { Button } from "@components/Button";
+import { RadioButton } from "@components/RadioButton";
 
-import { TextInput } from "../../TextInput";
-import { MaskedInput, Masks } from "../../MaskedInput";
-import { Text } from "../../Text";
-import { Button } from "../../Button";
-import { RadioButton } from "../../RadioButton";
+import { Release } from "@models/Release";
+
+import { useForm } from "@hooks/useForm";
 
 export type EditableData = { name: string; value: number; date: string };
 

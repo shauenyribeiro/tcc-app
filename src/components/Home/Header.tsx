@@ -1,15 +1,19 @@
 import { StyleSheet, View, Pressable } from "react-native";
 import { Image } from "expo-image";
+import { useAuth } from "@realm/react";
 
 import { Text, LINE_HEIGHT_MULTIPLIER } from "@components/Text";
 
 type HeaderProps = { value: number };
 
 export function Header({ value = 0 }: HeaderProps) {
+  const { logOut } = useAuth();
+
   const formattedValue = new Intl.NumberFormat("default", {
     currency: "BRL",
     style: "currency",
   }).format(value);
+
   return (
     <View style={styles.container}>
       <View style={styles.appInfoContainer}>
@@ -17,7 +21,10 @@ export function Header({ value = 0 }: HeaderProps) {
           source={require("../../../assets/img/logo.png")}
           style={styles.logo}
         />
-        <Pressable style={styles.helpButton}>
+        <Text weight="bold" style={styles.title}>
+          FINANTROLE
+        </Text>
+        <Pressable style={styles.helpButton} onPress={logOut}>
           <Text style={styles.help}>?</Text>
         </Pressable>
       </View>
@@ -33,6 +40,11 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     padding: 16,
+  },
+  title: {
+    color: "#ffffff",
+    fontSize: 24,
+    lineHeight: 24 * LINE_HEIGHT_MULTIPLIER,
   },
   text: {
     color: "#ffffff",

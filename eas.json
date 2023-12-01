@@ -17,6 +17,10 @@
       "android": {
         "buildType": "apk",
         "gradleCommand": ":app:assembleRelease"
+      },
+      "env": {
+        "EXPO_PUBLIC_API_URL": "https://tcc-api-deployment.azurewebsites.net",
+        "EXPO_PUBLIC_REALM_APP_ID": "finantrole-zmxmf"
       }
     },
     "production": {}

@@ -7,7 +7,7 @@ import {
 import { useCallback, useState } from "react";
 import { useNavigation } from "expo-router";
 import { StackActions } from "@react-navigation/native";
-import { useRealm } from "@realm/react";
+import { useRealm, useUser } from "@realm/react";
 
 import { TextInput } from "@components/TextInput";
 import { MaskedInput, Masks } from "@components/MaskedInput";
@@ -30,6 +30,7 @@ type FormFields = {
 export default function Create() {
   const navigation = useNavigation();
   const realm = useRealm();
+  const user = useUser();
   const [checkedOption, setCheckedOption] = useState<CheckboxOptions>("");
   const [loading, setLoading] = useState(false);
   const [values, setValues] = useForm<FormFields>({
@@ -47,7 +48,7 @@ export default function Create() {
   }, []);
 
   const handleValueInput = useCallback(
-    (_maskedValue: string, name: string, unmaskedValue: string) => {
+    (_maskedValue: string, name: keyof FormFields, unmaskedValue: string) => {
       setValues(unmaskedValue, name);
     },
     []
@@ -63,6 +64,7 @@ export default function Create() {
         value,
         date: values.date,
         name: values.name,
+        userId: user.id,
       });
     });
     setLoading(false);

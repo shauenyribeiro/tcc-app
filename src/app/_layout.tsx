@@ -15,7 +15,7 @@ export default function Layout() {
   return (
     <AppProvider id={process.env.EXPO_PUBLIC_REALM_APP_ID}>
       <UserProvider fallback={<LoginScreen />}>
-        <RealmProvider schema={schemas}>
+        <RealmProvider schema={schemas} schemaVersion={1}>
           <StatusBar style="auto" backgroundColor="#8191E4" translucent />
           <Stack
             screenOptions={{

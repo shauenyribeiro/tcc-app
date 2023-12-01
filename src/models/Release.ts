@@ -5,6 +5,7 @@ export class Release extends Realm.Object {
   name!: string;
   value!: number;
   date!: string;
+  userId!: string;
   createdAt: Date = new Date();
 
   static primaryKey = "_id";
